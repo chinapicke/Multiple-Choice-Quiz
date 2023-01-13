@@ -12,7 +12,7 @@
             b: "HyperText Machine Language",
             c: "HyperText Marking Language",
             d: "HighText Marking Language",
-            correct: "a",
+            correct: "HyperText Markup Language",
         },
         {
             question: "Which of the following keywords is used to define a variable in Javascript?",
@@ -20,7 +20,7 @@
             b: "let",
             c: "Both A and B",
             d: "None of the above",
-            correct: "c",
+            correct: "Both A and B",
         },
         {
             question: "Which element is used for or styling HTML layout?",
@@ -28,7 +28,7 @@
             b: "jQuery",
             c: "Javascript",
             d: "PHP",
-            correct: "a",
+            correct: "CSS",
         },
         {
             question: "What does <ul> stand for?",
@@ -36,15 +36,15 @@
             b: "Unordered list",
             c: "Undefined",
             d: "None of the above",
-            correct: "b",
+            correct: "Unordered list",
         },
         {
             question: "What does CSS stand for?",
-            a: "Cascading Style Sheets.",
+            a: "Cascading Style Sheets",
             b: "Coloured Special Sheets",
             c: "Color and style sheets",
             d: "None of the above",
-            correct: "a",
+            correct: "Cascading Style Sheets",
         },
         {
             question: "What does && expression mean?",
@@ -52,7 +52,7 @@
             b: "Or",
             c: "Add",
             d: "None of the above",
-            correct: "d",
+            correct: "None of the above",
         },
     ]
 

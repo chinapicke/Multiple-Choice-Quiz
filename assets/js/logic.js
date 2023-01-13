@@ -12,10 +12,10 @@ let timerEl = document.getElementById("time")
 let questionTitle = document.getElementById("question-title")
 // This accesses the choices within the HTML 
 // Unsure what array.from is (need to research)
-let choice1 = document.getElementById('choice-1')
-let choice2 = document.getElementById('choice-2')
-let choice3 = document.getElementById('choice-3')
-let choice4 = document.getElementById('choice-4')
+let choiceOne = document.getElementById('choice-1')
+let choiceTwo = document.getElementById('choice-2')
+let choiceThree = document.getElementById('choice-3')
+let choiceFour = document.getElementById('choice-4')
 // This accesses the final score within the HTML 
 let finalScore = document.getElementById("final-score")
 // This accesses the initials within the HTML
@@ -53,30 +53,94 @@ function firstQuestion() {
     // QuestionedAskedIndex is used to select which question we want to show, by following it with question key value pair in quizData array 
     questionTitle.textContent = quizData[questionAskedIndex].question;
     // This same method is used to show the relative choices within the question
-    choice1.textContent = quizData[questionAskedIndex].a;
-    choice2.textContent = quizData[questionAskedIndex].b;
-    choice3.textContent = quizData[questionAskedIndex].c;
-    choice4.textContent = quizData[questionAskedIndex].d;
+    choiceOne.textContent = quizData[questionAskedIndex].a;
+    choiceTwo.textContent = quizData[questionAskedIndex].b;
+    choiceThree.textContent = quizData[questionAskedIndex].c;
+    choiceFour.textContent = quizData[questionAskedIndex].d;
+}
 
-    if ()
-} 
-
-
-// // to check that the questions from question.js are being accessed
-// console.log(quizData)
-
-// Function to displayquestion
-// function displayQuestion(){
-//     for (var i = 0; i < quizData.length;i++){
-// }
-
-
-// For loop to loop through each quizData question
-// for (var i = 0; i < quizData.length;i++){
-//     let questionWriting = quizData[i]
-//     questionOnly = questionWriting.question
-//     console.log(questionOnly)
-//     questionTitle.textContent = questionOnly
-// }
+// Function occurs if user clicks on the first choice in the MCQ choices
+choiceOne.addEventListener("click", function () {
+// If the user clicked on choice One and it equals the correct answer, console log correct
+    if (this.textContent === quizData[questionAskedIndex].correct) {
+      console.log("correct");
+      //show correct on result
+    } else {
+      console.log("incorrect");
+      //show result incorrect
+      counter = counter - 10;
+    }
+    quizData++;
+    if (quizData === quizData .length) {
+      endGame();
+    } else {
+      showQuestion();
+    }
+  });
+  
+  
+//   document.getElementById("answer-2").addEventListener("click", function () {
+//     if (this.textContent === questions[questionLog].correct) {
+//       console.log("correct");
+//       //show correct on result
+//       document.getElementById("result").innerHTML ="CORRECT!"
+//     } else {
+//       console.log("incorrect");
+//       //show result incorrect
+//       document.getElementById("result").innerHTML ="INCORRECT!"
+//       counter = counter - 10;
+//     }
+//     questionLog++;
+//     if (questionLog === questions.length) {
+//       endGame();
+//     } else {
+//       showQuestion();
+//     }
+//   });
+  
+  
+  
+  
+//   document.getElementById("answer-3").addEventListener("click", function () {
+//     if (this.textContent === questions[questionLog].correct) {
+//       console.log("correct");
+//       //show correct on result
+//       document.getElementById("result").innerHTML ="CORRECT!"
+//     } else {
+//       console.log("incorrect");
+//       //show result incorrect
+//       document.getElementById("result").innerHTML ="INCORRECT!"
+  
+//       counter = counter - 10;
+//     }
+//     questionLog++;
+//     if (questionLog === questions.length) {
+//       endGame();
+//     } else {
+//       showQuestion();
+//     }
+//   });
+  
+  
+  
+//   document.getElementById("answer-4").addEventListener("click", function () {
+//     if (this.textContent === questions[questionLog].correct) {
+//       console.log("correct");
+//       //show correct on result
+//       document.getElementById("result").innerHTML ="CORRECT!"
+//     } else {
+//       console.log("incorrect");
+//       //show result incorrect
+//       document.getElementById("result").innerHTML ="INCORRECT!"
+  
+//       counter = counter - 10;
+//     }
+//     questionLog++;
+//     if (questionLog === questions.length) {
+//       endGame();
+//     } else {
+//       showQuestion();
+//     }
+//   });
 
 
