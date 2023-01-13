@@ -8,59 +8,52 @@
     let quizData = [
         {
             question: "What does HTML stand for?",
-            answers:[
-                {answer: "HyperText Markup Language", correct: true},
-                {answer:"HyperText Machine Language", correct: false },
-                {answer:"HyperText Marking Language", correct: false },
-                {answer:"HighText Marking Language", correct: false }
-            ]
+            a: "HyperText Markup Language",
+            b: "HyperText Machine Language",
+            c: "HyperText Marking Language",
+            d: "HighText Marking Language",
+            correct: "a",
         },
         {
             question: "Which of the following keywords is used to define a variable in Javascript?",
-            answers:[
-                {answer: "var", correct: false},
-                {answer:"let", correct: false },
-                {answer:"Both A and B", correct: true },
-                {answer:"None of the above", correct: false }
-            ]
+            a: "var",
+            b: "let",
+            c: "Both A and B",
+            d: "None of the above",
+            correct: "c",
         },
         {
             question: "Which element is used for or styling HTML layout?",
-            answers:[
-                {answer: "CSS", correct: true},
-                {answer:"jQuery", correct: false },
-                {answer:"Javascript", correct: false },
-                {answer:"PHP", correct: false }
-            ]
+            a: "CSS",
+            b: "jQuery",
+            c: "Javascript",
+            d: "PHP",
+            correct: "a",
         },
         {
             question: "What does <ul> stand for?",
-            answers:[
-                {answer:"Ordered list", correct: false},
-                {answer:"Unordered list", correct: true },
-                {answer:"Undefined", correct: false },
-                {answer:"None of the above", correct: false }
-            ]
+            a: "Ordered list",
+            b: "Unordered list",
+            c: "Undefined",
+            d: "None of the above",
+            correct: "b",
         },
         {
             question: "What does CSS stand for?",
-            answers:[
-                {answer:"Cascading Style Sheets", correct: true},
-                {answer:"Coloured Special Sheets", correct: false },
-                {answer:"Color and style sheets", correct: false },
-                {answer:"None of the above", correct: false }
-            ]
+            a: "Cascading Style Sheets.",
+            b: "Coloured Special Sheets",
+            c: "Color and style sheets",
+            d: "None of the above",
+            correct: "a",
         },
         {
             question: "What does && expression mean?",
-            answers:[
-                {answer: "Question", correct: false},
-                {answer:"Or", correct: false },
-                {answer:"And", correct: false },
-                {answer:"None of the above", correct: true }
-            ]
+            a: "Question",
+            b: "Or",
+            c: "Add",
+            d: "None of the above",
+            correct: "d",
         },
     ]
 
 
-// Create a for loop to iterate through each question to then print to the page 
