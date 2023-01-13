@@ -48,6 +48,7 @@ multipleQuestions()
 }
 
 
-function multipleQuestions(){
+function multipleQuestions(question){
     // Need to input object of questions
+    questionTitle.textContent = question.question-title
 }
