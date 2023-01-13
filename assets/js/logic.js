@@ -7,7 +7,7 @@ let startScreen = document.getElementById("start-screen")
 // This accesses the question containers
 let questionContainer = document.getElementById('questions')
 // This accesses the start id within HTML 
-let timerEl = document.getElementById("time")
+let timeEl = document.getElementById("time")
 // This accesses the question title within the HTML 
 let questionTitle = document.getElementById("question-title")
 // This accesses the choices within the HTML 
@@ -26,8 +26,7 @@ let highScoreList = document.getElementById("highscores")
 
 //enable score to be added dependent if the answer is correct or not 
 let score = 0
-// create variable to set starting time to 60 seconds 
-let timeLeft = 60
+
 // This will be used when rendeing question and choices onto the page, this number will then be incremented to show the next questions with the relative choices
 let questionAskedIndex = 0
 
@@ -45,13 +44,38 @@ function startGame() {
     startScreen.classList.add('hide')
     // This shows the hidden questions
     questionContainer.classList.remove('hide')
-    firstQuestion()
+    currentQuestion()
 }
 
+// create variable to set starting time to 60 seconds 
+let secondsLeft = 60
+// function to countdown the time from 60 seconds
+function countDown(){
+// Followed steps from activity in Lesson 1 re: clock counting down
+var timerInterval = setInterval(function(){
+    secondsLeft--;
+    timeEl.textContent= secondsLeft;
+
+    if(secondsLeft === 0){
+        // Stops exection of setInterval
+        clearInterval(timerInterval )
+    }
+},1000)
+}
+
+countDown()
+
+
+
+
+
+
+
 // Function to start displaying the first question and the choices within it 
-function firstQuestion() {
+function currentQuestion() {
     // QuestionedAskedIndex is used to select which question we want to show, by following it with question key value pair in quizData array 
-    questionTitle.textContent = quizData[questionAskedIndex].question;
+    var stringQuestion = JSON.stringify(quizData[questionAskedIndex].question)
+    questionTitle.textContent = stringQuestion
     // This same method is used to show the relative choices within the question
     choiceOne.textContent = quizData[questionAskedIndex].a;
     choiceTwo.textContent = quizData[questionAskedIndex].b;
@@ -62,85 +86,19 @@ function firstQuestion() {
 // Function occurs if user clicks on the first choice in the MCQ choices
 choiceOne.addEventListener("click", function () {
 // If the user clicked on choice One and it equals the correct answer, console log correct
-    if (this.textContent === quizData[questionAskedIndex].correct) {
+    if (this.textContent === (quizData[questionAskedIndex].correct)) {
       console.log("correct");
       //show correct on result
     } else {
       console.log("incorrect");
-      //show result incorrect
-      counter = counter - 10;
+      //show result incorrect 
+    //   counter = counter - 10;
     }
     quizData++;
     if (quizData === quizData .length) {
       endGame();
     } else {
-      showQuestion();
+      currentQuestion();
     }
-  });
+});
   
-  
-//   document.getElementById("answer-2").addEventListener("click", function () {
-//     if (this.textContent === questions[questionLog].correct) {
-//       console.log("correct");
-//       //show correct on result
-//       document.getElementById("result").innerHTML ="CORRECT!"
-//     } else {
-//       console.log("incorrect");
-//       //show result incorrect
-//       document.getElementById("result").innerHTML ="INCORRECT!"
-//       counter = counter - 10;
-//     }
-//     questionLog++;
-//     if (questionLog === questions.length) {
-//       endGame();
-//     } else {
-//       showQuestion();
-//     }
-//   });
-  
-  
-  
-  
-//   document.getElementById("answer-3").addEventListener("click", function () {
-//     if (this.textContent === questions[questionLog].correct) {
-//       console.log("correct");
-//       //show correct on result
-//       document.getElementById("result").innerHTML ="CORRECT!"
-//     } else {
-//       console.log("incorrect");
-//       //show result incorrect
-//       document.getElementById("result").innerHTML ="INCORRECT!"
-  
-//       counter = counter - 10;
-//     }
-//     questionLog++;
-//     if (questionLog === questions.length) {
-//       endGame();
-//     } else {
-//       showQuestion();
-//     }
-//   });
-  
-  
-  
-//   document.getElementById("answer-4").addEventListener("click", function () {
-//     if (this.textContent === questions[questionLog].correct) {
-//       console.log("correct");
-//       //show correct on result
-//       document.getElementById("result").innerHTML ="CORRECT!"
-//     } else {
-//       console.log("incorrect");
-//       //show result incorrect
-//       document.getElementById("result").innerHTML ="INCORRECT!"
-  
-//       counter = counter - 10;
-//     }
-//     questionLog++;
-//     if (questionLog === questions.length) {
-//       endGame();
-//     } else {
-//       showQuestion();
-//     }
-//   });
-
-
