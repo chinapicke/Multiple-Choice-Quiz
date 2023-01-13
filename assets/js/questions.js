@@ -5,7 +5,7 @@
     // We need to create a further if statement to the above that will deduct time from the clock if it is incorrect
 
     // Create object to store the datat of all the questions and the answers 
-    let quizData = [
+    var quizData = [
         {
             question: "What does HTML stand for?",
             a: "HyperText Markup Language",
