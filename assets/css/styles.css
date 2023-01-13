@@ -58,6 +58,7 @@ li:nth-child(odd) {
   max-width: 600px;
 }
 
+/* When display set to none, this hides the question container and the initial input at the end of the page  */
 .hide {
   display: none;
 }
