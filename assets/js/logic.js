@@ -1,4 +1,4 @@
-// DOM selectors
+// -------------DOM selectors------------------
 // This accesses the start id within HTML 
 let startBtn = document.getElementById("start")
 // This accss the h1 and p tag within the startscreen div within HTML 
@@ -23,6 +23,8 @@ let initialsEl = document.getElementById("initials")
 let highScoreList = document.getElementById("highscores")
 // This accesses all the information on the end screen in the HTML 
 let endOfGame = document.getElementById("end-screen")
+// This access the submit button on the end screen in the HTML
+let submitBtn = document.getElementById("submit")
 
 
 //enable score to be added dependent if the answer is correct or not 
@@ -32,7 +34,7 @@ var questionAskedIndex = 0
 
 
 
-// Starting the game 
+// ------------Starting the game------------------
 function startGame() {
     // To check that the button is functioning properly
     //     console.log("Game has been started")
@@ -50,7 +52,7 @@ startBtn.addEventListener("click", startGame)
 
 
 
-// Countdown timer
+// -----------Countdown timer------------------
 // create variable to set starting time to 60 seconds 
 let secondsLeft = 60
 // function to countdown the time from 60 seconds
@@ -64,7 +66,7 @@ function countDown() {
             // Stops exection of setInterval
             clearInterval(timerInterval)
             // This ends the game and sends user to the page where they need to input initials
-            // endGame()
+            endGame()
         }
     }, 1000)
 }
@@ -75,9 +77,9 @@ startBtn.addEventListener("click", countDown);
 
 
 
-// Question being asked and the choices 
+// ----------Question being asked and the choices----------
 // This shows the first question in the quizData array 
-console.log(quizData[0].question)
+// console.log(quizData[0].question)
 function showQuestions() {
     // QuestionedAskedIndex is used to select which question we want to show, by following it with question key value pair in quizData array 
     // This same method is used to show the relative choices within the question
@@ -88,95 +90,104 @@ function showQuestions() {
     choiceFour.innerHTML = quizData[questionAskedIndex].d;
 }
 // Function to start displaying the first question and the choices within it 
-    // Function occurs if user clicks on the first choice in the MCQ choices
-    choiceOne.addEventListener("click", function () {
-        // If the user clicked on choice One and it equals the correct answer, console log correct
-        if (this.textContent === (quizData[questionAskedIndex].correct)) {
-            console.log("correct");
-            score += 5
-            //show correct on result
-        } else {
-            console.log("incorrect");
-            //show result incorrect 
-            // Subtracts 10 seconds when user chooses an incorrect choice 
-            secondsLeft -= 10
-        }
-        // This loops through each question and choice set within quizData
+// Function occurs if user clicks on the first choice in the MCQ choices
+choiceOne.addEventListener("click", function () {
+    // If the user clicked on choice One and it equals the correct answer, console log correct
+    if (this.textContent === (quizData[questionAskedIndex].correct)) {
+        console.log("correct");
+        score += 5
+        //show correct on result
+    } else {
+        console.log("incorrect");
+        //show result incorrect 
+        // Subtracts 10 seconds when user chooses an incorrect choice 
+        secondsLeft -= 10
+    }
+    // This loops through each question and choice set within quizData
+    questionAskedIndex++;
+    // If statement that if there are no more quiz questions or timeleft is 0 then end the game and send user to end screen 
+    if (questionAskedIndex === quizData.length)
+    // if (questionAskedIndex === quizData.length || secondsLeft === 0)
+    {
+        endGame();
+    } else {
+        showQuestions();
+    }
+});
+
+// Created the same as choiceOne for the other choices; this enables user input to be consoled as correct or incorrect
+choiceTwo.addEventListener("click", function () {
+    // If the user clicked on choice One and it equals the correct answer, console log correct
+    if (this.textContent === (quizData[questionAskedIndex].correct)) {
+        console.log("correct");
+        score += 5
+        //show correct on result
+    } else {
+        console.log("incorrect");
+        secondsLeft -= 10
+        //show result incorrect 
         questionAskedIndex++;
-        // If statement that if there are no more quiz questions or timeleft is 0 then end the game and send user to end screen 
-        if (quizData === quizData.length || secondsLeft === 0) {
+        if (questionAskedIndex === quizData.length) {
             endGame();
         } else {
             showQuestions();
         }
-    });
-
-    // Created the same as choiceOne for the other choices; this enables user input to be consoled as correct or incorrect
-    choiceTwo.addEventListener("click", function () {
-        // If the user clicked on choice One and it equals the correct answer, console log correct
-        if (this.textContent === (quizData[questionAskedIndex].correct)) {
-            console.log("correct");
-            score += 5
-            //show correct on result
-        } else {
-            console.log("incorrect");
-            secondsLeft -= 10
-            //show result incorrect 
-            questionAskedIndex++;
-            if (quizData === quizData.length || secondsLeft === 0) {
-                endGame();
-            } else {
-                showQuestions();
-            }
-        }
-    })
-
-    choiceThree.addEventListener("click", function () {
-        // If the user clicked on choice One and it equals the correct answer, console log correct
-        if (this.textContent === (quizData[questionAskedIndex].correct)) {
-            console.log("correct");
-            score += 5
-            //show correct on result
-        } else {
-            console.log("incorrect");
-            secondsLeft -= 10
-            //show result incorrect 
-            questionAskedIndex++;
-            if (quizData === quizData.length || secondsLeft === 0) {
-                endGame();
-            } else {
-                showQuestions();
-            }
-        }
-    })
-
-    choiceFour.addEventListener("click", function () {
-        // If the user clicked on choice One and it equals the correct answer, console log correct
-        if (this.textContent === (quizData[questionAskedIndex].correct)) {
-            console.log("correct");
-            score += 5
-            //show correct on result
-        } else {
-            console.log("incorrect");
-            secondsLeft -= 10
-            //show result incorrect 
-            questionAskedIndex++;
-            if (quizData === quizData.length|| secondsLeft === 0) {
-                endGame();
-            } else {
-                showQuestions();
-            }
-        }
-    })
-
-
-
-    // End of the game 
-    function endGame() {
-        // Sets timer to 0
-        timerEl.textContent = 0;
-        // Hides questions and the choices 
-        questionContainer.classList.add('hide')
-        // Removes the hidden class for the end-screen div 
-        endOfGame.classList.remove('hide')
     }
+})
+
+choiceThree.addEventListener("click", function () {
+    // If the user clicked on choice One and it equals the correct answer, console log correct
+    if (this.textContent === (quizData[questionAskedIndex].correct)) {
+        console.log("correct");
+        score += 5
+        //show correct on result
+    } else {
+        console.log("incorrect");
+        secondsLeft -= 10
+        //show result incorrect 
+        questionAskedIndex++;
+        if (questionAskedIndex === quizData.length) {
+            endGame();
+        } else {
+            showQuestions();
+        }
+    }
+})
+
+choiceFour.addEventListener("click", function () {
+    // If the user clicked on choice One and it equals the correct answer, console log correct
+    if (this.textContent === (quizData[questionAskedIndex].correct)) {
+        console.log("correct");
+        score += 5
+        //show correct on result
+    } else {
+        console.log("incorrect");
+        secondsLeft -= 10
+        //show result incorrect 
+        questionAskedIndex++;
+        if (questionAskedIndex === quizData.length) {
+            endGame();
+        } else {
+            showQuestions();
+        }
+    }
+})
+
+
+
+
+// ------------End of the game -------------
+function endGame() {
+    // Hides questions and the choices 
+    questionContainer.classList.add('hide')
+    // Removes the hidden class for the end-screen div 
+    endOfGame.classList.remove('hide')
+    // Sets timer to 0 to stop timer 
+    timeEl = 0
+    // Renders players score onto the page 
+    finalScore.textContent = score + "/30"
+    // submitBtn.addEventListener('click', function(){
+      
+}
+
+
