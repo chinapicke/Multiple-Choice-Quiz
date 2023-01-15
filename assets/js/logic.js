@@ -215,7 +215,7 @@ highScores.push({Initials: hsInitials, Score:hsScore})
 localStorage.setItem("highScores", JSON.stringify(highScores))
 // displayHighScores()
 // This directs the user to the page of highscores so they can see where they are on the leaderboard 
-window.location.href = "/highscores.html"
+window.location.href = "https://chinapicke.github.io/Multiple-Choice-Quiz/highscores.html"
 
 }
 
