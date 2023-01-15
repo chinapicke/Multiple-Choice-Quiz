@@ -25,6 +25,8 @@ let highScoreList = document.getElementById("highscores")
 let endOfGame = document.getElementById("end-screen")
 // This access the submit button on the end screen in the HTML
 let submitBtn = document.getElementById("submit")
+// This accesses the leaderboard within highscores HTML 
+let leaderBoard = document.getElementById("leaderboard")
 
 
 //enable score to be added dependent if the answer is correct or not 
@@ -54,7 +56,7 @@ startBtn.addEventListener("click", startGame)
 
 // -----------Countdown timer------------------
 // create variable to set starting time to 60 seconds 
-let secondsLeft = 60
+let secondsLeft = 90
 // function to countdown the time from 60 seconds
 function countDown() {
     // Followed steps from activity in Lesson 1 re: clock counting down
@@ -125,6 +127,7 @@ choiceTwo.addEventListener("click", function () {
     } else {
         console.log("incorrect");
         secondsLeft -= 10
+    }
         //show result incorrect 
         questionAskedIndex++;
         if (questionAskedIndex === quizData.length) {
@@ -132,7 +135,7 @@ choiceTwo.addEventListener("click", function () {
         } else {
             showQuestions();
         }
-    }
+    
 })
 
 choiceThree.addEventListener("click", function () {
@@ -143,7 +146,7 @@ choiceThree.addEventListener("click", function () {
         //show correct on result
     } else {
         console.log("incorrect");
-        secondsLeft -= 10
+        secondsLeft -= 10}
         //show result incorrect 
         questionAskedIndex++;
         if (questionAskedIndex === quizData.length) {
@@ -151,7 +154,7 @@ choiceThree.addEventListener("click", function () {
         } else {
             showQuestions();
         }
-    }
+    
 })
 
 choiceFour.addEventListener("click", function () {
@@ -162,7 +165,7 @@ choiceFour.addEventListener("click", function () {
         //show correct on result
     } else {
         console.log("incorrect");
-        secondsLeft -= 10
+        secondsLeft -= 10}
         //show result incorrect 
         questionAskedIndex++;
         if (questionAskedIndex === quizData.length) {
@@ -170,7 +173,7 @@ choiceFour.addEventListener("click", function () {
         } else {
             showQuestions();
         }
-    }
+    
 })
 
 
@@ -186,8 +189,79 @@ function endGame() {
     timeEl = 0
     // Renders players score onto the page 
     finalScore.textContent = score + "/30"
-    // submitBtn.addEventListener('click', function(){
-      
+    // Submit buttons is clicked then saveInfo function is run
+    submitBtn.addEventListener('click', saveInfo)
+}
+
+// Create empty variable to push the users initials and score into 
+var highScores = JSON.parse(localStorage.getItem("highScores")) || []
+
+// --------- SAVING USER INFORMATION FOR SCOREBOARD-----
+function saveInfo(event){
+    // This stops the form being sent so that it can be saved to local storage
+    // This also prevents form from reloading the page 
+event.preventDefault()
+// Check that the input is not empty
+if (!initialsEl.value ) {
+    alert("Please input your initials before clicking the submit button")
+    return;
+}
+// Storing the users initials and score 
+let hsInitials = initialsEl.value
+let hsScore = finalScore.innerText
+// Pushing the saved user initials and score into the empty array of highscores, which can be updated when new users play the game
+highScores.push({Initials: hsInitials, Score:hsScore})
+// adds the info from the user into the array
+localStorage.setItem("highScores", JSON.stringify(highScores))
+// displayHighScores()
+// This directs the user to the page of highscores so they can see where they are on the leaderboard 
+window.location.href = "/highscores.html"
+
 }
 
 
+// -----------CHECKING USER INPUT AGAINST HIGHSCORE DATABASE-------
+// Function to check local storage for high scores
+function getHighScores(){
+    // Converts string items into an object so that the user initials and score can be showed as an object 
+    let savedHighScores = JSON.parse(localStorage.getItem("highScores"))
+// if statement, if highscores is in savedHigh then it will run the displayhigh score function or push the object into highscores array
+    if (savedHighScores) {
+        highScores = savedHighScores;
+        displayHighScores()
+      } else {
+        highScores = [];
+      }
+}
+// --------FUNCTION TO PRINT THE SCORES ONTO THE PAGE AND ADD NEW LI ELEMENT----
+function displayHighScores() {
+    // Sort highscores in order with the function of sortScores
+    highScores.sort(sortScores)
+    // For each new initial and score input, create li element to be put in the ol of highscores
+    // for (let i = 0; i < highScores.length; i++) {
+    //   let li = document.createElement("li");
+    // //   This prints the score and initials of each new created li element onto the webpage
+    //   li.innerHTML = `Initials: ${highScores[i].Initials} Score: ${highScores[i].Score}`;
+    // //   Adds the newly created li element to the highscores list 
+    //   highScoreList.append(li);
+    // }
+   }
+
+// -----FUNCTION TO SORT SCORES FROM HIGH TO LOW------
+// function sortScores (a,b){
+//     // Assigned scores into variables so that they can be compared in if/else statement 
+//     let scoreOne = a.Score
+//     let scoreTwo = b.Score 
+//     // Variable that can be incremented or decremented to help with comparison if/else statement 
+//     let comparisonAmount = 0
+
+//     if (scoreOne > scoreTwo) {
+//         comparisonAmount = +1
+//     }
+//     else {
+//         comparisonAmount = -1
+//     }
+
+//     return comparisonAmount
+// }
+// getHighScores()

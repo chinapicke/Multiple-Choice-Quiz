@@ -31,7 +31,7 @@
             correct: "CSS",
         },
         {
-            question: "What does <ul> stand for?",
+            question: "What does ul stand for?",
             a: "Ordered list",
             b: "Unordered list",
             c: "Undefined",
