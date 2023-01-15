@@ -27,6 +27,8 @@ let endOfGame = document.getElementById("end-screen")
 let submitBtn = document.getElementById("submit")
 // This accesses the leaderboard within highscores HTML 
 let leaderBoard = document.getElementById("leaderboard")
+// This accesses the feedback if each question is right or wrong
+let feedback = document.getElementById("feedback")
 
 
 //enable score to be added dependent if the answer is correct or not 
@@ -98,12 +100,19 @@ choiceOne.addEventListener("click", function () {
     if (this.textContent === (quizData[questionAskedIndex].correct)) {
         console.log("correct");
         score += 5
+        // This shows the user at the bottom of the page if the answer is correct or incorrect
+        feedback.textContent = "Correct"
+        feedback.classList.remove('hide')
         //show correct on result
     } else {
         console.log("incorrect");
         //show result incorrect 
         // Subtracts 10 seconds when user chooses an incorrect choice 
         secondsLeft -= 10
+        feedback.textContent = "Wrong"
+        feedback.classList.remove('hide')
+
+
     }
     // This loops through each question and choice set within quizData
     questionAskedIndex++;
@@ -123,10 +132,18 @@ choiceTwo.addEventListener("click", function () {
     if (this.textContent === (quizData[questionAskedIndex].correct)) {
         console.log("correct");
         score += 5
+        feedback.textContent = "Correct"
+        feedback.classList.remove('hide')
+
+
         //show correct on result
     } else {
         console.log("incorrect");
         secondsLeft -= 10
+        feedback.textContent = "Wrong"
+        feedback.classList.remove('hide')
+
+
     }
         //show result incorrect 
         questionAskedIndex++;
@@ -143,10 +160,18 @@ choiceThree.addEventListener("click", function () {
     if (this.textContent === (quizData[questionAskedIndex].correct)) {
         console.log("correct");
         score += 5
+        feedback.textContent = "Correct"
+        feedback.classList.remove('hide')
+
+
         //show correct on result
     } else {
         console.log("incorrect");
         secondsLeft -= 10}
+        feedback.textContent = "Wrong"
+        feedback.classList.remove('hide')
+
+
         //show result incorrect 
         questionAskedIndex++;
         if (questionAskedIndex === quizData.length) {
@@ -162,10 +187,18 @@ choiceFour.addEventListener("click", function () {
     if (this.textContent === (quizData[questionAskedIndex].correct)) {
         console.log("correct");
         score += 5
+        feedback.textContent = "Correct"
+        feedback.classList.remove('hide')
+
+
         //show correct on result
     } else {
         console.log("incorrect");
         secondsLeft -= 10}
+        feedback.textContent = "Wrong"
+        feedback.classList.remove('hide')
+
+
         //show result incorrect 
         questionAskedIndex++;
         if (questionAskedIndex === quizData.length) {
@@ -185,6 +218,8 @@ function endGame() {
     questionContainer.classList.add('hide')
     // Removes the hidden class for the end-screen div 
     endOfGame.classList.remove('hide')
+    // Hides the feedback 
+    feedback.classList.add('hide')
     // Sets timer to 0 to stop timer 
     timeEl = 0
     // Renders players score onto the page 
