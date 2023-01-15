@@ -23,12 +23,15 @@ function displayHighScores() {
     // For each new initial and score input, create li element to be put in the ol of highscores
     for (let i = 0; i < highScores.length; i++) {
       let li = document.createElement("li");
+    
     //   This prints the score and initials of each new created li element onto the webpage
-      li.innerHTML = `Initials: ${highScores[i].Initials} Score: ${highScores[i].Score}`;
+      li.innerHTML = "Initials"+ highScores[i].Initials+ "    Score:"+ highScores[i].Score;
     //   Adds the newly created li element to the highscores list 
-      highScoreList.append(li);
+      highScoreList.append(li); 
     }
 }
+
+
 
 // -----FUNCTION TO SORT SCORES FROM HIGH TO LOW------
 function sortScores (a,b){
