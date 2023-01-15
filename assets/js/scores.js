@@ -25,7 +25,7 @@ function displayHighScores() {
       let li = document.createElement("li");
     
     //   This prints the score and initials of each new created li element onto the webpage
-      li.innerHTML = "Initials"+ highScores[i].Initials+ "    Score:"+ highScores[i].Score;
+      li.innerHTML = "Initials:"+ highScores[i].Initials+ "    Score:"+ highScores[i].Score;
     //   Adds the newly created li element to the highscores list 
       highScoreList.append(li); 
     }
