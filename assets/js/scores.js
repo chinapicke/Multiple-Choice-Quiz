@@ -19,7 +19,6 @@ function getHighScores(){
 
 function displayHighScores() {
     // Sort highscores in order
-    highScores.sort(sortScores)
     // For each new initial and score input, create li element to be put in the ol of highscores
     for (let i = 0; i < highScores.length; i++) {
       let li = document.createElement("li");
@@ -32,23 +31,22 @@ function displayHighScores() {
 }
 
 
-
 // -----FUNCTION TO SORT SCORES FROM HIGH TO LOW------
-function sortScores (a,b){
-    // Assigned scores into variables so that they can be compared in if/else statement 
-    let scoreOne = a.Score
-    let scoreTwo = b.Score
-    // Variable that can be incremented or decremented to help with comparison if/else statement 
-    let comparisonAmount = 0
+// function sortScores (a,b){
+//     // Assigned scores into variables so that they can be compared in if/else statement 
+//     let scoreOne = a.Score
+//     let scoreTwo = b.Score
+//     // Variable that can be incremented or decremented to help with comparison if/else statement 
+//     let comparisonAmount = 0
 
-    if (scoreOne > scoreTwo) {
-        // if scoreOne is more than scoreTwo, but this above scoreTwo
-        comparisonAmount = +1
-    }
-    else (scoreOne < scoreTwo) 
-        comparisonAmount = -1
-    return comparisonAmount
-}
+//     if (scoreOne > scoreTwo) {
+//         // if scoreOne is more than scoreTwo, but this above scoreTwo
+//         comparisonAmount = +1
+//     }
+//     else (scoreOne < scoreTwo) 
+//         comparisonAmount = -1
+//     return comparisonAmount
+// }
 
 getHighScores()
 
